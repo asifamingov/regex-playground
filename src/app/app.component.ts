@@ -8,6 +8,7 @@ interface Results {
   stringEntered: string;
   flags: string;
   method: string;
+  functionRan: string;
 }
 
 
@@ -31,6 +32,7 @@ export class AppComponent {
   calRegex(calForm: FormGroup) {
     if (calForm.valid) {
       let res: any;
+      let functionRan: any;
       const regexMethod = calForm.controls.RegExpMethod.value;
       const stringMethod = calForm.controls.stringMethod.value;
       const regexFlag = calForm.controls.regexFlag.value;
@@ -38,21 +40,27 @@ export class AppComponent {
       const stringVal = calForm.controls.stringInput.value;
       if (regexMethod === 'exec') {
         res = regexVal.exec(stringVal);
+        functionRan = 'regexVal.exec(stringVal)';
       }
       if (regexMethod === 'test') {
         res = regexVal.test(stringVal);
+        functionRan = `${regexVal}.test(${stringVal})`;
       }
       if (stringMethod === 'match') {
         res = stringVal.match(regexVal);
+        functionRan = `${regexVal}.match(${stringVal})`;
       }
       if (stringMethod === 'replace') {
         res = stringVal.replace(regexVal);
+        functionRan = `${regexVal}.replace(${stringVal})`;
       }
       if (stringMethod === 'search') {
         res = stringVal.search(regexVal);
+        functionRan = `${regexVal}.search(${stringVal})`;
       }
       if (stringMethod === 'split') {
         res = stringVal.split(regexVal);
+        functionRan = `${regexVal}.split(${stringVal})`;
       }
 
       // console.log(stringVal.match(regexVal));
@@ -60,7 +68,8 @@ export class AppComponent {
         match : res,
         stringEntered : stringVal,
         flags : regexFlag,
-        method: regexMethod
+        method: regexMethod,
+        functionRan: functionRan,
       };
     }
   }
