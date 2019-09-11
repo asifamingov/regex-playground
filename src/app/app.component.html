@@ -1,0 +1,93 @@
+<div class="container">
+  <form #calForm = ngForm novalidate>
+    <div class="card">
+      <div class="card-body">
+        <div class="row mb-4">
+          <div class="col-sm-10 my-1">
+            <label for="regexInput" class="h5">Enter a regex value</label><br>
+            <small class="hint">Ex - ab+c , \S* </small>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><strong>/</strong></div>
+              </div>
+              <input type="text" class="form-control" name="regexInput" id="regexInput" aria-describedby="regexInput" placeholder="Enter regex"
+                     #regexInput
+                     (keyup)="calRegex(calForm)"
+                     [(ngModel)]="regexMod">
+              <div class="input-group-append">
+                <div class="input-group-text"><strong>/</strong></div>
+                <select id="inputState" name="regexFlag" class="form-control"
+                        [(ngModel)]="regexFlagMod"
+                        #regexFlag
+                        (change)="calRegex(calForm)">
+                  <option value="g">(g) global</option>
+                  <option value="i">(i) insensitive</option>
+                  <option value="m">(m) multi line</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 my-1">
+            <label for="RegExpMethod">Select a RegExp method</label>
+            <select id="RegExpMethod" name="RegExpMethod" class="form-control"
+                    [(ngModel)]="RegExpMethodMod"
+                    #RegExpMethodFlag
+                    (change)="calRegex(calForm)">
+              <option value=""></option>
+              <option value="exec">exec</option>
+              <option value="test">test</option>
+            </select>
+          </div>
+          <div class="col-sm-1 text-dark">
+           OR
+          </div>
+          <div class="col-sm-3 my-1">
+            <label for="stringMethod">Select a String method </label>
+            <select id="stringMethod" name="stringMethod" class="form-control"
+                    [(ngModel)]="stringMethodMod"
+                    #stringMethodFlag
+                    (change)="calRegex(calForm)">
+              <option value=""></option>
+              <option value="match">match</option>
+              <option value="search">search</option>
+              <option value="replace">replace</option>
+              <option value="split">split</option>
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <input type="text" placeholder="enter a split or replace parameter" class="form-control" name="extraDetails">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6 my-1">
+            <label for="stringInput" class="h5">Place a string to test the regex</label>
+            <input type="text" class="form-control" name="stringInput" id="stringInput"
+                   #stringInput
+                   (keyup)="calRegex(calForm)"
+                   [required]="regexMod ? true : null"
+                   [(ngModel)]="stringMod"
+                   placeholder="Enter a string to test the regex">
+            <small class="alert-danger" [hidden]="!stringInput.required || stringInput.value">String is required</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<hr />
+Result
+<div class="bg-light">
+  <pre>{{obj | json }}</pre>
+</div>
+<hr />
+
+
+
