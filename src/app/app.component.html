@@ -19,7 +19,7 @@
                 <select id="inputState" name="regexFlag" class="form-control"
                         [(ngModel)]="regexFlagMod"
                         #regexFlag
-                        (change)="calRegex(calForm)">
+                        (keydown)="calRegex(calForm)">
                   <option value="g">(g) global</option>
                   <option value="i">(i) insensitive</option>
                   <option value="m">(m) multi line</option>
@@ -34,7 +34,7 @@
             <select id="RegExpMethod" name="RegExpMethod" class="form-control"
                     [(ngModel)]="RegExpMethodMod"
                     #RegExpMethodFlag
-                    (change)="calRegex(calForm)">
+                    (keydown)="calRegex(calForm)">
               <option value=""></option>
               <option value="exec">exec</option>
               <option value="test">test</option>
@@ -48,7 +48,7 @@
             <select id="stringMethod" name="stringMethod" class="form-control"
                     [(ngModel)]="stringMethodMod"
                     #stringMethodFlag
-                    (change)="calRegex(calForm)">
+                    (keydown)="calRegex(calForm)">
               <option value=""></option>
               <option value="match">match</option>
               <option value="search">search</option>
@@ -56,8 +56,12 @@
               <option value="split">split</option>
             </select>
           </div>
-          <div class="col-sm-4">
-            <input type="text" placeholder="enter a split or replace parameter" class="form-control" name="extraDetails">
+          <div class="col-sm-4 mt-4">
+            <input type="text" placeholder="enter a split or replace parameter" class="form-control"
+                   name="replaceVal"
+                   [(ngModel)]="replaceValue"
+                   #replaceVal
+                   (keydown)="calRegex(calForm)">
           </div>
         </div>
       </div>

@@ -11,6 +11,10 @@ interface Results {
   functionRan: string;
 }
 
+/*TODO
+* 'Replace' is not working as
+* Except global flag all others are not working
+* */
 
 @Component({
   selector: 'app-root',
@@ -25,6 +29,7 @@ export class AppComponent {
   obj: Results;
   RegExpMethodMod: any;
   stringMethodMod: any;
+  replaceValue: any;
 
   constructor() {}
 
@@ -34,11 +39,13 @@ export class AppComponent {
       let res: any;
       let functionRan: any;
       const regexMethod = calForm.controls.RegExpMethod.value;
+      const replaceVal = calForm.controls.replaceVal.value;
       const stringMethod = calForm.controls.stringMethod.value;
       const regexFlag = calForm.controls.regexFlag.value;
       const regexVal = new RegExp(calForm.controls.regexInput.value, 'g');
       const stringVal = calForm.controls.stringInput.value;
       if (regexMethod === 'exec') {
+        console.log('Inside exec method');
         res = regexVal.exec(stringVal);
         functionRan = 'regexVal.exec(stringVal)';
       }
@@ -51,8 +58,8 @@ export class AppComponent {
         functionRan = `${regexVal}.match(${stringVal})`;
       }
       if (stringMethod === 'replace') {
-        res = stringVal.replace(regexVal);
-        functionRan = `${regexVal}.replace(${stringVal})`;
+        res = stringVal.replace(regexVal , replaceVal);
+        functionRan = `${stringVal}.replace(${regexVal}, ${replaceVal})`;
       }
       if (stringMethod === 'search') {
         res = stringVal.search(regexVal);
