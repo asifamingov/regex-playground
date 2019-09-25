@@ -16,14 +16,10 @@
                      [(ngModel)]="regexMod">
               <div class="input-group-append">
                 <div class="input-group-text"><strong>/</strong></div>
-                <select id="inputState" name="regexFlag" class="form-control"
-                        [(ngModel)]="regexFlagMod"
-                        #regexFlag
-                        (keydown)="calRegex(calForm)">
-                  <option value="g">(g) global</option>
-                  <option value="i">(i) insensitive</option>
-                  <option value="m">(m) multi line</option>
-                </select>
+                <input type="text" placeholder="enter a flag i.e g, i , m" class="form-control" name="regexFlag"
+                       [(ngModel)]="regexFlagMod"
+                       #regexFlag
+                       (keyup)="calRegex(calForm)">
               </div>
             </div>
           </div>
@@ -34,7 +30,7 @@
             <select id="RegExpMethod" name="RegExpMethod" class="form-control"
                     [(ngModel)]="RegExpMethodMod"
                     #RegExpMethodFlag
-                    (keydown)="calRegex(calForm)">
+                    (change)="calRegex(calForm)">
               <option value=""></option>
               <option value="exec">exec</option>
               <option value="test">test</option>
@@ -48,7 +44,7 @@
             <select id="stringMethod" name="stringMethod" class="form-control"
                     [(ngModel)]="stringMethodMod"
                     #stringMethodFlag
-                    (keydown)="calRegex(calForm)">
+                    (change)="calRegex(calForm)">
               <option value=""></option>
               <option value="match">match</option>
               <option value="search">search</option>
@@ -87,8 +83,14 @@
 </div>
 
 <hr />
-<div class="bg-light container jumbotron">
-  <pre>{{obj | json }}</pre>
+<div class="bg-light container jumbotron" *ngIf="obj?.stringEntered?.length > 0">
+  <ul class="list-group">
+    <li class="list-group-item"><span class="text-muted">Match:</span> <span class="text-info pl-1">{{obj.match}}</span></li>
+    <li class="list-group-item"><span class="text-muted">String entered:</span> <span class="text-info pl-1">{{obj.stringEntered}}</span></li>
+    <li class="list-group-item"><span class="text-muted">Flags:</span> <span class="text-info pl-1">{{obj.flags}}</span></li>
+    <li class="list-group-item"><span class="text-muted">Method:</span> <span class="text-info pl-1">{{obj.method}}</span></li>
+    <li class="list-group-item"><span class="text-muted">Function:</span> <span class="text-info pl-1">{{obj.functionRan}}</span></li>
+  </ul>
 </div>
 <hr />
 

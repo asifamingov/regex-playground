@@ -25,7 +25,7 @@ export class AppComponent {
   public Mod: any;
   regexMod: any;
   stringMod: any;
-  regexFlagMod: any = 'g';
+  regexFlagMod: any;
   obj: Results;
   RegExpMethodMod: any;
   stringMethodMod: any;
@@ -42,7 +42,7 @@ export class AppComponent {
       const replaceVal = calForm.controls.replaceVal.value;
       const stringMethod = calForm.controls.stringMethod.value;
       const regexFlag = calForm.controls.regexFlag.value;
-      const regexVal = new RegExp(calForm.controls.regexInput.value, 'g');
+      const regexVal = new RegExp(calForm.controls.regexInput.value, regexFlag);
       const stringVal = calForm.controls.stringInput.value;
       if (regexMethod === 'exec') {
         console.log('Inside exec method');
@@ -63,7 +63,7 @@ export class AppComponent {
       }
       if (stringMethod === 'search') {
         res = stringVal.search(regexVal);
-        functionRan = `${regexVal}.search(${stringVal})`;
+        functionRan = `${stringVal}.search(${regexVal})`;
       }
       if (stringMethod === 'split') {
         res = stringVal.split(regexVal);
