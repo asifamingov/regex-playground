@@ -45,7 +45,6 @@ export class AppComponent {
       const regexVal = new RegExp(calForm.controls.regexInput.value, regexFlag);
       const stringVal = calForm.controls.stringInput.value;
       if (regexMethod === 'exec') {
-        console.log('Inside exec method');
         res = regexVal.exec(stringVal);
         functionRan = 'regexVal.exec(stringVal)';
       }
