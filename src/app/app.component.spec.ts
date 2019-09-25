@@ -7,7 +7,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [
-        AppComponent
+        AppComponent,
+        FormsModule
       ],
     }).compileComponents();
   }));
