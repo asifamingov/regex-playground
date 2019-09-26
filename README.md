@@ -4,6 +4,6 @@ Calculate Regex using JS
 
 Examples
 
-![](.README_images/1556b7e5.png)
+1. ![](.README_images/1556b7e5.png)
 
-![](.README_images/76fa6769.png)
+2. ![](.README_images/76fa6769.png)
