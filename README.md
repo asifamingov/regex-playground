@@ -1,6 +1,6 @@
 Calculate Regex using JS
 
-<https://asifamingov.github.io/regex-js/>
+<https://asifamingov.github.io/regex-playground/>
 
 Examples
 
